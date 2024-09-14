@@ -1,0 +1,20 @@
+use std::fs::File;
+use std::io::{self, Read, Write};
+
+fn main() -> io::Result<()> {
+    // Open the input.txt file in read mode
+    let mut input_file = File::open("input.txt")?;
+    let mut content = String::new();
+    
+    // Read the contents of input.txt into a string
+    input_file.read_to_string(&mut content)?;
+    
+    // Open (or create) the output.txt file in write mode
+    let mut output_file = File::create("output.txt")?;
+    
+    // Write the content into output.txt
+    output_file.write_all(content.as_bytes())?;
+    
+    Ok(())
+}
+

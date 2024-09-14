@@ -1,0 +1,23 @@
+import java.io.*;
+
+public class FileCopy {
+    public static void main(String[] args) {
+        try {
+            // Create FileReader and FileWriter objects
+            FileReader fr = new FileReader("input.txt");
+            FileWriter fw = new FileWriter("output.txt");
+
+            // Read characters from input.txt and write them to output.txt
+            int character;
+            while ((character = fr.read()) != -1) {
+                fw.write(character);
+            }
+
+            // Close the file streams
+            fr.close();
+            fw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}

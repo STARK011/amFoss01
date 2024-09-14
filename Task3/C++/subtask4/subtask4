@@ -1,0 +1,35 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+
+void print_diamond(int n, std::ofstream &output_file) {
+    // Top half of the diamond
+    for (int i = 0; i < n; i++) {
+        output_file << std::string(n - i - 1, ' ') << std::string(2 * i + 1, '*') << '\n';
+    }
+
+    // Bottom half of the diamond
+    for (int i = n - 2; i >= 0; i--) {
+        output_file << std::string(n - i - 1, ' ') << std::string(2 * i + 1, '*') << '\n';
+    }
+}
+
+int main() {
+    std::ifstream input_file("input.txt");
+    std::ofstream output_file("output.txt");
+
+    if (!input_file.is_open() || !output_file.is_open()) {
+        std::cerr << "Error opening file" << std::endl;
+        return 1;
+    }
+
+    int n;
+    input_file >> n;
+
+    print_diamond(n, output_file);
+
+    input_file.close();
+    output_file.close();
+
+    return 0;
+}

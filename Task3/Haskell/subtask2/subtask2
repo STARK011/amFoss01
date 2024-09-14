@@ -1,0 +1,7 @@
+main :: IO ()
+main = do
+    -- Read the content from input.txt
+    content <- readFile "input.txt"
+    
+    -- Write the content to output.txt
+    writeFile "output.txt" content

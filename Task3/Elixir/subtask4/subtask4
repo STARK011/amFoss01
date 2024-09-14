@@ -1,0 +1,23 @@
+defmodule Diamond do
+  def generate_diamond(n) do
+    top_half = Enum.map(0..(n - 1), fn i ->
+      String.duplicate(" ", n - i - 1) <> String.duplicate("*", 2 * i + 1)
+    end)
+
+    bottom_half = Enum.map((n - 2)..0//-1, fn i ->
+      String.duplicate(" ", n - i - 1) <> String.duplicate("*", 2 * i + 1)
+    end)
+
+    Enum.join(top_half ++ bottom_half, "\n")
+  end
+end
+
+# Read the number from input.txt
+{:ok, n_str} = File.read("input.txt")
+n = String.to_integer(String.trim(n_str))
+
+# Generate the diamond pattern
+diamond = Diamond.generate_diamond(n)
+
+# Write the diamond pattern to output.txt
+File.write!("output.txt", diamond)

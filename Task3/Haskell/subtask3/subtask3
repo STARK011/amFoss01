@@ -1,0 +1,23 @@
+import Control.Monad (replicateM)
+
+-- Function to generate a line with given number of spaces and asterisks
+generateLine :: Int -> Int -> String
+generateLine spaces asterisks =
+    replicate spaces ' ' ++ replicate asterisks '*'
+
+-- Function to generate the diamond pattern
+generateDiamond :: Int -> [String]
+generateDiamond n = 
+    -- Top half
+    [generateLine (n - i - 1) (2 * i + 1) | i <- [0..n-1]]
+    ++
+    -- Bottom half
+    [generateLine (n - i - 1) (2 * i + 1) | i <- reverse [0..n-2]]
+
+-- Main function
+main :: IO ()
+main = do
+    putStrLn "Enter a number:"
+    input <- getLine
+    let n = read input :: Int
+    mapM_ putStrLn (generateDiamond n)

@@ -1,0 +1,5 @@
+# Read the content of input.txt
+{:ok, content} = File.read("input.txt")
+
+# Write the content to output.txt
+:ok = File.write("output.txt", content)

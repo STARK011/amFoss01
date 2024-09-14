@@ -1,0 +1,20 @@
+package main
+
+import (
+    "io/ioutil"
+    "log"
+)
+
+func main() {
+    // Read the content of input.txt
+    content, err := ioutil.ReadFile("input.txt")
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    // Write the content to output.txt
+    err = ioutil.WriteFile("output.txt", content, 0644)
+    if err != nil {
+        log.Fatal(err)
+    }
+}

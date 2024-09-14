@@ -1,0 +1,5 @@
+# Read content from input.txt
+content = File.read('input.txt')
+
+# Write content to output.txt
+File.write('output.txt', content)

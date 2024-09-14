@@ -1,0 +1,27 @@
+import System.IO
+
+-- Function to generate a line with the given number of spaces and asterisks
+generateLine :: Int -> Int -> String
+generateLine spaces asterisks =
+    replicate spaces ' ' ++ replicate asterisks '*'
+
+-- Function to generate the diamond pattern
+generateDiamond :: Int -> [String]
+generateDiamond n = 
+    -- Top half
+    [generateLine (n - i - 1) (2 * i + 1) | i <- [0..n-1]] ++
+    -- Bottom half
+    [generateLine (n - i - 1) (2 * i + 1) | i <- reverse [0..n-2]]
+
+-- Main function
+main :: IO ()
+main = do
+    -- Read the number from input.txt
+    input <- readFile "input.txt"
+    let n = read input :: Int
+    
+    -- Generate the diamond pattern
+    let diamond = generateDiamond n
+
+    -- Write the diamond pattern to output.txt
+    writeFile "output.txt" (unlines diamond)
